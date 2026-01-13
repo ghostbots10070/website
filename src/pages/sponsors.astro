@@ -1,0 +1,60 @@
+---
+import Layout from '@layouts/Base.astro';
+import { Image } from 'astro:assets';
+import abingtonLogo from "../assets/abingtonpa.png";
+import aefLogo from "../assets/aef.png";
+
+const sponsors = [
+    {
+        "name": "Abington School District",
+        "logo": abingtonLogo,
+        "website": "https://abingtonsd.org"
+    },
+    {
+        "name": "Abington Educational Foundation",
+        "logo": aefLogo,
+        "website": "https://aef-pa.org"
+    }
+];
+---
+
+<Layout title="Our Sponsors - FRC Team 10070" description="Thank you to our sponsors who support FRC Team 10070, the GhostBots. Learn how you can become a sponsor.">
+
+    <!-- Hero Section -->
+    <section class="">
+        <div class="container text-center">
+            <h1 class="font-header text-5xl md:text-7xl mb-6 text-tamarillo-700">Our Sponsors</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto text-black drop-shadow-md">We are grateful for the support from our sponsors that make our robotics program possible.</p>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mt-4 text-gray-700">Interested in becoming a sponsor? View our sponsorship packet!</p>
+            <a href="/ghostbots-sponsorship-packet.pdf" class="inline-block bg-tamarillo-700 text-white px-6 py-3 rounded-lg font-semibold mt-6 hover:bg-tamarillo-500 transition-colors" target="_blank" rel="noopener noreferrer">View Sponsorship Packet</a>
+        </div>
+    </section>
+
+    <!-- Sponsors List -->
+    <section class="py-16 md:py-20 pt-15">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {sponsors.map(sponsor => (
+                    <div class="bg-tamarillo-100 rounded-lg p-8 shadow-sm text-center">
+                        <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="block">
+                            <Image layout="constrained" src={sponsor.logo} alt={`${sponsor.name} logo`} class="h-16 w-auto mx-auto mb-4" />
+                            <h3 class="text-xl font-semibold text-black">{sponsor.name}</h3>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Become a Sponsor Section -->
+    <section class="bg-blue-chill-50 border-2 border-black rounded-xl">
+        <div class="container mx-auto px-4 p-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-header mb-4 text-tamarillo-700">Become a Sponsor</h2>
+                <p class="text-lg mb-8 text-gray-600">Support the next generation of engineers and innovators. Your sponsorship helps us build robots, compete in competitions, and inspire students.</p>
+                <a href="/contact" class="inline-block bg-tamarillo-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-tamarillo-500 transition-colors">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+</Layout>

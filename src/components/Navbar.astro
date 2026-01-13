@@ -1,0 +1,197 @@
+---
+import instagramIcon from '../assets/icons/instagram.svg';
+import youtubeIcon from '../assets/icons/youtube.svg';
+
+const navLinks = [
+  { href: '/', text: 'Home' },
+  { href: "/donate", text: 'Donate' },
+  { href: '/sponsors', text: 'Sponsors' },
+  { href: '/robots/', text: 'Robots' },
+  { href: '/team', text: 'Team' },
+  { href: '/contact', text: 'Contact' }
+];
+
+const socials = [
+  { href: "https://www.instagram.com/ghostbots10070/", icon: instagramIcon, label: 'Instagram' },
+  { href: "https://www.youtube.com/@GhostBots10070", icon: youtubeIcon, label: 'YouTube' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+<nav id="site-nav" data-open="false" class="relative bg-white-50 shadow-md">
+  <div class="container mx-auto flex h-16 items-center justify-between px-4">
+    <a href="/" class="text-4xl font-logo text-tamarillo-800">
+      GhostBots
+    </a>
+
+    <div class="hidden items-center space-x-5 sm:flex ml-auto">
+      <ul class="flex items-center space-x-6">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href;
+          return (
+            <li>
+              <a
+                href={link.href}
+                class={`rounded-md px-3 py-2 text-sm font-medium transition ${
+                  isActive
+                    ? 'bg-tamarillo-700 text-white'
+                    : 'text-gray-700 hover:bg-tamarillo-100 hover:text-tamarillo-700'
+                }`}
+                aria-current={isActive ? 'page' : undefined}
+                data-astro-prefetch
+              >
+                {link.text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="flex items-center space-x-3">
+        {socials.map((social) => (
+          <a
+            href={social.href}
+            class="text-tamarillo-700 hover:text-tamarillo-900 transition"
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Follow us on ${social.label}`}
+          >
+            <img src={social.icon.src} alt={`${social.label} icon`} class="h-5 w-5" />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="ml-auto flex items-center gap-3 sm:hidden">
+      {socials.map((social) => (
+        <a
+          href={social.href}
+          class="text-tamarillo-700 hover:text-tamarillo-900 transition"
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Follow us on ${social.label}`}
+        >
+          <img src={social.icon.src} alt={`${social.label} icon`} class="h-4 w-4" />
+        </a>
+      ))}
+
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        class="inline-flex items-center justify-center rounded-md p-2 text-tamarillo-700 transition hover:bg-tamarillo-100 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-tamarillo-500"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <svg
+          id="icon-open"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <svg
+          id="icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="hidden h-6 w-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="border-t border-gray-200 bg-white-50 sm:hidden">
+    <ul class="space-y-1 px-4 py-4">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href;
+        return (
+          <li>
+            <a
+              href={link.href}
+              class={`block rounded-md px-3 py-2 text-base font-medium transition ${
+                isActive
+                  ? 'bg-tamarillo-700 text-white'
+                  : 'text-gray-700 hover:bg-tamarillo-100 hover:text-tamarillo-700'
+              }`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.text}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  #site-nav[data-open='true'] #icon-open {
+    display: none;
+  }
+  #site-nav[data-open='true'] #icon-close {
+    display: block;
+  }
+  #site-nav #mobile-nav {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: transform var(--transition-duration, 200ms) ease, opacity var(--transition-duration, 200ms) ease, max-height var(--transition-duration, 200ms) ease;
+    pointer-events: none;
+  }
+  #site-nav[data-open='true'] #mobile-nav {
+    max-height: 20rem;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+    const setupMobileNav = () => {
+        const nav = document.getElementById('site-nav');
+        const toggleButton = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        const setMenuState = (open: boolean) => {
+            nav?.setAttribute('data-open', open ? 'true' : 'false');
+            toggleButton?.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+
+        toggleButton?.addEventListener('click', () => {
+            const isOpen = nav?.getAttribute('data-open') === 'true';
+            setMenuState(!isOpen);
+        });
+
+        mobileNav?.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+            // Disable transitions temporarily during navigation
+            nav?.style.setProperty('--transition-duration', '0ms');
+            setMenuState(false);
+
+            // Re-enable transitions after a brief delay
+            setTimeout(() => {
+                nav?.style.removeProperty('--transition-duration');
+            }, 50);
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 640) {
+                setMenuState(false);
+            }
+        });
+    }
+
+    // only run once
+    setupMobileNav();
+</script>

@@ -1,0 +1,103 @@
+---
+import Layout from '@layouts/Base.astro';
+
+const teamMembers = [
+    {
+        name: "Aitan Bogatin",
+        role: "Team Captain",
+        bio: "Leading the team & driving the robot",
+        photo: null
+    },
+    {
+        name: "Ryan Kawas",
+        role: "Vice President",
+        bio: "Business Subteam Leader, website developer",
+        photo: null
+    },
+    {
+        name: "Erik Ginzburg",
+        role: "Vice President",
+        bio: "Leading Mechanical Subteam",
+        photo: null
+    },
+    {
+        name: "Eric Zhang",
+        role: "Vice President",
+        bio: "Leading Electrical Subteam",
+        photo: null
+    },
+    {
+        name: "Kareem Trickey",
+        role: "Vice President",
+        bio: "Leading Programming Subteam",
+        photo: null
+    },
+];
+---
+
+<Layout title="Our Team - FRC Team 10070" description="Meet the dedicated students who make up FRC Team 10070, the GhostBots.">
+
+    <!-- Hero Section -->
+    <section class="py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="font-header text-6xl md:text-8xl mb-6 text-tamarillo-700">
+                    Our Team
+                </h1>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-700">
+                    Meet the dedicated students who make up FRC Team 10070.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {teamMembers.map((member) => (
+                    <div class="bg-white rounded-xl p-8 shadow-lg border-2 hover:border-tamarillo-500 hover:shadow-xl transition-all duration-200">
+                        <div class="text-center">
+                            <div class="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center text-4xl">
+                                {member.photo ? (
+                                    <img src={member.photo} alt={member.name} class="w-full h-full rounded-full object-cover" />
+                                ) : (
+                                    <span>👤</span>
+                                )}
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">{member.name}</h3>
+                            <p class="text-sm font-semibold uppercase tracking-wider text-tamarillo-700 mb-4 bg-tamarillo-50 px-3 py-1 rounded-full inline-block">
+                                {member.role}
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">{member.bio}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="py-10 bg-blue-chill-50 rounded-xl shadow-lg border-2">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-header text-4xl md:text-5xl mb-6 text-gray-800">Join GhostBots</h2>
+                <p class="text-xl mb-8 text-gray-600">
+                    Interested in robotics and engineering? We're always looking for passionate students who want to learn and grow with our team.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact" class="inline-flex items-center bg-tamarillo-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-tamarillo-500 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                        <span>Get in Touch</span>
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                    <a href="/sponsors" class="inline-flex items-center bg-white text-tamarillo-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 border-2 border-tamarillo-200">
+                        <span>Support Our Team</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</Layout>

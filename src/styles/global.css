@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+    --color-tamarillo-50: #fff0f1;
+    --color-tamarillo-100: #ffdee0;
+    --color-tamarillo-200: #ffc3c6;
+    --color-tamarillo-300: #ff9a9f;
+    --color-tamarillo-400: #ff5f67;
+    --color-tamarillo-500: #ff2d38;
+    --color-tamarillo-600: #f40e1a;
+    --color-tamarillo-700: #ce0711;
+    --color-tamarillo-800: #a30a12;  /* main */
+    --color-tamarillo-900: #8c1016;
+    --color-tamarillo-950: #4d0206;
+
+    --color-white-50: #ffffff; /* main */
+    --color-white-100: #efefef;
+    --color-white-200: #dcdcdc;
+    --color-white-300: #bdbdbd;
+    --color-white-400: #989898;
+    --color-white-500: #7c7c7c;
+    --color-white-600: #656565;
+    --color-white-700: #525252;
+    --color-white-800: #464646;
+    --color-white-900: #3d3d3d;
+    --color-white-950: #292929;
+
+    --color-cosmos-50: #fef3f2;
+    --color-cosmos-100: #fee5e5;
+    --color-cosmos-200: #fccfd1; /* main */
+    --color-cosmos-300: #f9a8ac;
+    --color-cosmos-400: #f5777f;
+    --color-cosmos-500: #ed4656;
+    --color-cosmos-600: #d9253e;
+    --color-cosmos-700: #b71934;
+    --color-cosmos-800: #991832;
+    --color-cosmos-900: #831831;
+    --color-cosmos-950: #490815;
+
+    --color-blue-chill-50: #ebfffd;
+    --color-blue-chill-100: #cefffc;
+    --color-blue-chill-200: #a3fefa;
+    --color-blue-chill-300: #63fdf9;
+    --color-blue-chill-400: #1cf4f3;
+    --color-blue-chill-500: #00d9da;
+    --color-blue-chill-600: #03adb7;
+    --color-blue-chill-700: #0b929d; /* main */
+    --color-blue-chill-800: #126d78;
+    --color-blue-chill-900: #145a65;
+    --color-blue-chill-950: #063d46;
+
+    --font-para: var(--font-para); /* necessary for astro font stuff */
+    --font-header: var(--font-header);
+    --font-logo: var(--font-logo)
+}
+
+body {
+  font-family: var(--font-para), sans-serif;
+}
+
+/*
+@view-transition {
+    navigation: auto;
+} */

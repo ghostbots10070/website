@@ -1,0 +1,45 @@
+---
+import "@styles/global.css"
+import { Font } from 'astro:assets';
+
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "GhostBots - FRC Team 10070",
+    description = "Official website of the GhostBots, FRC Team 10070"
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <title>{title}</title>
+
+        <Font cssVariable='--font-logo' preload />
+        <Font cssVariable='--font-para' preload />
+        <Font cssVariable='--font-header' preload />
+
+    </head>
+
+    <body class="min-h-screen bg-white-50 text-black font-para flex flex-col">
+        <div class="bg-cosmos-200 flex-grow">
+            <Navbar />
+
+            <main class="container mx-auto px-4 lg:px-12 py-8 pb-12">
+                <slot />
+            </main>
+        </div>
+
+        <Footer />
+    </body>
+</html>
