@@ -1,0 +1,45 @@
+---
+import Layout from '@layouts/Base.astro';
+import { Image } from "astro:assets"
+
+import robot2025 from "../../assets/DSC_0250.jpg"
+import altrobot2025 from "../../assets/DSC_0175.jpg"
+
+---
+
+<Layout title="Our Robots - FRC Team 10070" description="Explore the robots we've built for the FIRST Robotics Competition over the years.">
+
+    <!-- Hero Section -->
+    <section class="bg-blue-chill-700 text-white py-20 rounded-xl border-2 border-black">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-header mb-6 text-white">Our Robots</h1>
+            <p class="text-xl max-w-2xl mx-auto">Take a journey through our robotic creations.</p>
+        </div>
+    </section>
+
+    <!-- Robots Gallery -->
+    <section class="py-20">
+        <div class="container mx-auto">
+
+            <div class="space-y-20">
+                <!-- 2023 Robot -->
+                <div class="bg-white p-8 rounded-lg shadow-xl border-2 border-black">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-4xl font-header mb-4 text-cosmos-800">2025</h2>
+                            <p class="text-lg mb-4 text-black">As our very first robot, we focused on getting the team up and running and participating. Our 2025 robot was a kitbot, but made well enough to secure consistent points.</p>
+                            <p class="text-lg mb-4 text-black"><strong class="text-cosmos-600">Key Features:</strong> strong teleop, consistent L1 scoring</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- some bug when I use <Image so idfk -->
+                            <img src={robot2025.src} alt="2023 Robot" class="rounded-lg shadow-md border-4 border-white">
+                            <img src={altrobot2025.src} alt="2023 Robot Side View" class="rounded-lg shadow-md border-4 border-white">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</Layout>

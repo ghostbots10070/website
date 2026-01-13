@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import abingtonLogo from "../assets/abingtonpa.png";
+import aefLogo from "../assets/aef.png"
+import instagramIcon from '../assets/icons/instagram.svg';
+import youtubeIcon from '../assets/icons/youtube.svg';
+
+const sponsors = [
+    {
+        "name": "Abington School District",
+        "logo": abingtonLogo,
+        "tier": "Gold",
+        "website": "https://abingtonsd.org"
+    },
+    {
+        "name": "Abington Educational Foundation",
+        "logo": aefLogo,
+        "tier": "Silver",
+        "website": "https://aef-pa.org"
+    }
+];
+
+const socials = [
+    { href: "https://www.instagram.com/ghostbots10070/", icon: instagramIcon, label: "Instagram" },
+    { href: "https://www.youtube.com/@GhostBots10070", icon: youtubeIcon, label: "YouTube" }
+];
+---
+
+<footer class="bg-white-50 border-t border-cosmos-300">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Site Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-tamarillo-800 font-header">FRC Team 10070</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-gray-700 hover:text-tamarillo-700 transition-colors">Home</a></li>
+                    <li><a href="/donate" class="text-gray-700 hover:text-tamarillo-700 transition-colors">Donate</a></li>
+                    <li><a href="/team" class="text-gray-700 hover:text-tamarillo-700 transition-colors">Team</a></li>
+                    <li><a href="/robots" class="text-gray-700 hover:text-tamarillo-700 transition-colors">Robots</a></li>
+                    <li><a href="/contact" class="text-gray-700 hover:text-tamarillo-700 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-tamarillo-800 font-header">Socials</h3>
+                <div class="flex items-center gap-3 mb-4">
+                    {socials.map((social) => (
+                        <a
+                          href={social.href}
+                          class="inline-flex items-center justify-center text-tamarillo-700 hover:text-tamarillo-900 transition"
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Follow us on ${social.label}`}
+                        >
+                          <img src={social.icon.src} alt={`${social.label} icon`} class="h-6 w-6" />
+                        </a>
+                    ))}
+                </div>
+                <div class="text-gray-700">
+                    <a href="mailto:ghostbots10070@gmail.com" class="hover:text-tamarillo-700 transition-colors">
+                        ghostbots10070@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sponsors -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-tamarillo-800 font-header">Our Sponsors</h3>
+                <div class="flex flex-wrap gap-4">
+                    {sponsors.map(sponsor => (
+                        <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="block">
+                            <Image src={sponsor.logo} layout="fixed" alt={`${sponsor.name} logo`} class="h-12 w-auto grayscale hover:grayscale-0 transition-all" />
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-cosmos-300 mt-8 pt-4 text-center text-sm text-gray-600">
+            <p>&copy; 2025-2026 FRC Team 10070. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
