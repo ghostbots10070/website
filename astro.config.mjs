@@ -7,9 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     site: "https://ghostbots.org",
     output: "static",
-    build: {
-        format: "preserve",
-    },
+    //build: {
+        //format: "preserve",
+    //},
     vite: {
         plugins: [tailwindcss()],
         resolve: {
