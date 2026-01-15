@@ -3,7 +3,7 @@ import Layout from '@layouts/Base.astro';
 import { Image } from "astro:assets"
 import heroImage from "../assets/DSC_0553.jpg"
 
-const kickoffDate = new Date("2026-01-10T00:00:00");
+const kickoffDate = new Date("2026-03-06T00:00:00");
 ---
 
 <Layout title="Home - FRC Team 10070" description="Welcome to FRC Team 10070, the GhostBots. Discover our robotics journey, latest news, and how to get involved.">
@@ -14,7 +14,7 @@ const kickoffDate = new Date("2026-01-10T00:00:00");
                     <h1 class="font-header text-5xl md:text-7xl mb-6 text-tamarillo-700">FRC 10070</h1>
                     <p class="text-xl md:text-2xl mb-8 max-w-2xl drop-shadow-md">We're GhostBots, Abington Senior High School's FIRST Robotics team.</p>
                     <div id="countdown" class="mb-10 inline-block text-center p-6 bg-white rounded-lg shadow-lg border-2 hover:border-tamarillo-800 hover:shadow-xl transition-all duration-200">
-                        <h2 class="text-2xl font-header mb-4 text-tamarillo-700">FRC Kickoff Countdown</h2>
+                        <h2 class="text-2xl font-header mb-4 text-tamarillo-700">FRC Competition Countdown</h2>
                         <div class="text-4xl font-bold text-blue-chill-700" id="timer" data-date={kickoffDate}>
                             Loading...
                         </div>
