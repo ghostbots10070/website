@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import abingtonLogo from "../assets/abingtonpa.png";
 import aefLogo from "../assets/aef.png";
 import frederickLogo from "../assets/fredericksCompanyLogo.png";
-const sponsors = [
+const companySponsors = [
     {
         "name": "Abington School District",
         "logo": abingtonLogo,
@@ -21,7 +21,13 @@ const sponsors = [
             "logo": frederickLogo,
             "website": "https://www.frederickscompany.com"
         }
+    ]
 
+const individualSponsors = [
+        {
+         "name": "James N. Perry",
+         "type": "individual"
+        }
 ];
 ---
 
@@ -42,7 +48,7 @@ const sponsors = [
        
         <div class="container mx-auto px-4">   
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {sponsors.map(sponsor => (
+                {companySponsors.map(sponsor => (
                     <div class="bg-tamarillo-100 rounded-lg p-8 shadow-sm text-center">
                         <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="block">
                             {sponsor.logo ? (
@@ -60,8 +66,20 @@ const sponsors = [
         </div>
     </section>
 
-  
-
+  <!-- Individual Sponsors  -->
+ <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-header mb-8 text-tamarillo-700 text-center">Individual Sponsors</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-6">We'd like to thank our individual sponsors:</p>
+                <ul class="space-y-2">
+                    {individualSponsors.map(sponsor => (
+                        <li class="text-gray-700">{sponsor.name}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </section>
     <!-- Become a Sponsor Section -->
     <section class="bg-blue-chill-50 border-2 border-black rounded-xl">
         <div class="container mx-auto px-4 p-8">
