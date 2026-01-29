@@ -3,7 +3,7 @@ import Layout from '@layouts/Base.astro';
 import { Image } from 'astro:assets';
 import abingtonLogo from "../assets/abingtonpa.png";
 import aefLogo from "../assets/aef.png";
-
+import frederickLogo from "../assets/fredericksCompanyLogo.png";
 const sponsors = [
     {
         "name": "Abington School District",
@@ -15,6 +15,13 @@ const sponsors = [
         "logo": aefLogo,
         "website": "https://aef-pa.org"
     }
+        ,
+        {
+            "name": "The Fredericks Company",
+            "logo": frederickLogo,
+            "website": "https://www.frederickscompany.com"
+        }
+
 ];
 ---
 
@@ -32,12 +39,19 @@ const sponsors = [
 
     <!-- Sponsors List -->
     <section class="py-16 md:py-20 pt-15">
-        <div class="container mx-auto px-4">
+       
+        <div class="container mx-auto px-4">   
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {sponsors.map(sponsor => (
                     <div class="bg-tamarillo-100 rounded-lg p-8 shadow-sm text-center">
                         <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="block">
-                            <Image layout="constrained" src={sponsor.logo} alt={`${sponsor.name} logo`} class="h-16 w-auto mx-auto mb-4" />
+                            {sponsor.logo ? (
+                                <Image layout="constrained" src={sponsor.logo} alt={`${sponsor.name} logo`} class="h-16 w-auto mx-auto mb-4" />
+                            ) : (
+                                <div class="h-16 flex items-center justify-center mb-4">
+                                    <span class="text-lg font-semibold text-gray-800">{sponsor.name}</span>
+                                </div>
+                            )}
                             <h3 class="text-xl font-semibold text-black">{sponsor.name}</h3>
                         </a>
                     </div>
@@ -45,6 +59,8 @@ const sponsors = [
             </div>
         </div>
     </section>
+
+  
 
     <!-- Become a Sponsor Section -->
     <section class="bg-blue-chill-50 border-2 border-black rounded-xl">
